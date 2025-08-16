@@ -1,5 +1,7 @@
 from fastapi import FastAPI
 from app.routers import category, products, auth
+from app.config import settings
+from app.routers import permission
 
 app = FastAPI()
 
@@ -12,3 +14,9 @@ async def welcome() -> dict:
 app.include_router(category.router)
 app.include_router(products.router)
 app.include_router(auth.router)
+app.include_router(permission.router)
+
+
+@app.get("/key")
+def get_key():
+    return {"secret_key": settings.SECRET_KEY}
