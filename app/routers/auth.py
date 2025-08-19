@@ -22,6 +22,7 @@ from app.backend.db_depends import get_db
 
 
 router = APIRouter(prefix='/auth', tags=['auth'])
+
 bcrypt_context = CryptContext(schemes=['bcrypt'], deprecated='auto')
 # security = HTTPBasic()
 oauth2_scheme = OAuth2PasswordBearer(tokenUrl="auth/token")

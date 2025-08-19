@@ -20,7 +20,7 @@ class Product(Base):
     is_active = Column(Boolean, default=True)
 
     category = relationship('Category', back_populates='products', uselist=False) # New
-
+    reviews = relationship("Review", back_populates="product")
 
 
 # if __name__ == '__main__':
