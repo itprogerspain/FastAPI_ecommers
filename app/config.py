@@ -5,6 +5,7 @@ class Settings(BaseSettings):
     SECRET_KEY: str = "CHANGE_ME"
     ALGORITHM: str = "HS256"
     ACCESS_TOKEN_EXPIRE_MINUTES: int = 30
+    SESSION_SECRET_KEY: str = "CHANGE_ME"
 
     # Настройки базы данных
     debug: bool
