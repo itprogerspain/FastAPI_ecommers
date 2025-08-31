@@ -1,16 +1,33 @@
-from fastapi import FastAPI
+from fastapi import FastAPI, Request
 from starlette.middleware.sessions import SessionMiddleware
 from app.routers import category, products, auth, permission, reviews, session
 from app.config import settings
+from dotenv import load_dotenv
+from app.log import log_middleware
 
+
+
+
+load_dotenv()
 
 app = FastAPI()
 
+app.middleware("http")(log_middleware)
+
+
+
+
 app.add_middleware(SessionMiddleware, secret_key=settings.SESSION_SECRET_KEY)
+
+
+
+
 
 @app.get("/")
 async def welcome() -> dict:
     return {"message": "My e-commerce app"}
+
+
 
 
 app.include_router(category.router)

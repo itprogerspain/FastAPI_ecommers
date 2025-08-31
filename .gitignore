@@ -5,6 +5,7 @@ __pycache__/
 
 drivers/
 logs/
+*.log
 
 # C extensions
 *.so
@@ -165,4 +166,5 @@ cython_debug/
 
 debug_sql.py
 init_db.py
+info.log
 alembic
