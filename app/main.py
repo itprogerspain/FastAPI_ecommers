@@ -13,13 +13,7 @@ load_dotenv()
 app = FastAPI()
 
 app.middleware("http")(log_middleware)
-
-
-
-
 app.add_middleware(SessionMiddleware, secret_key=settings.SESSION_SECRET_KEY)
-
-
 
 
 
