@@ -12,7 +12,6 @@ logger.add(
     enqueue = True
 )
 
-
 async def log_middleware(request: Request, call_next):
     log_id = str(uuid4())
     with logger.contextualize(log_id=log_id):

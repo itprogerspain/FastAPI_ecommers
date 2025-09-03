@@ -1,3 +1,4 @@
+
 version: "3.9"
 
 services:
@@ -23,15 +24,11 @@ services:
 
   worker:
     build: .
-    container_name: rq_worker
+    container_name: celery_worker
     depends_on:
       - redis
-    environment:
-      REDIS_HOST: redis
-      REDIS_PORT: "6379"
     volumes:
       - .:/app
-    # слушаем очередь "default"
-    command: rq worker -u redis://redis:6379 default
+    command: celery -A tests.frontend.celery_app.celery worker --loglevel=INFO
 
 
