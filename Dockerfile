@@ -1,7 +1,8 @@
 FROM python:3.12-slim
 
-# Чтобы pip не кешировал пакеты
-ENV PIP_NO_CACHE_DIR=1
+# Чтобы pip не кешировал пакеты и логи будут без задержек
+ENV PYTHONUNBUFFERED=1 \
+    PIP_NO_CACHE_DIR=1
 
 WORKDIR /app
 

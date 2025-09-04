@@ -23,13 +23,13 @@ app.add_middleware(
 )
 
 
-
 @app.get("/run-high")
 async def run_high():
     high_priority_task.delay()
     return {"status": "High priority task sent"}
 
+
 @app.get("/run-low")
 async def run_low(message: str = "Hello from Celery"):
-    low_priority_task.delay(message)
+    low_priority_task.apply_async(args=[message], countdown=60*5)
     return {"status": f"Low priority task sent with message: {message}"}
